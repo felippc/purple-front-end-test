@@ -12,6 +12,7 @@ require('angular-messages');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-touch');
+require('angular-bootstrap');
 
 /**
  * @ngdoc overview
@@ -30,7 +31,8 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ]);
 
 app.config(function($routeProvider, $controllerProvider) {
@@ -45,7 +47,7 @@ app.config(function($routeProvider, $controllerProvider) {
           var deferred = $q.defer();
 
           require.ensure([], function(require) {
-
+            require('angular-bootstrap');
             require('./controllers/login');
             deferred.resolve();
           });

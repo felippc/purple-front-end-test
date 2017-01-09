@@ -1,59 +1,95 @@
 // bower:scss
 // endbower
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-.login-page {
-  width: 550px;
-  padding: 8% 0 0;
-  margin: auto;
+.login-modal .modal-dialog {
+  width: 500px;
+  margin-top: 100px;
+}
+
+.purple-header {
+  background: #704B74;
+  color: #FFFFFF;
+
+  .header-title {
+    position: relative;
+    float: left;
+    margin: 4px 0px 4px 15px;
+  }
+  .close-button {
+    position: relative;
+    text-align: right;
+    float: right;
+    margin: 4px 15px 4px 0px;
+
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+  }
 }
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 550px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+  i.purple-icon {
+    margin: 7px 22px 0px 0px;
+    color: #B9B7BA;
+  }
+
+  .row {
+    margin: 5px -3px;
+  }
+
+  .final-row {
+    margin-bottom: 15px;
+  }
+
+  .sign-button {
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .pass-link {
+    padding-top: 5px;
+  }
+
+  .pass-link a {
+    color: #B9B7BA;
+  }
 }
 .form input {
-  font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: #F0EEF1;
   width: 100%;
-  border: 0;
+  border: 1px solid rgba(128, 128, 128, 0.2);
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  border-radius: 3px;
 }
+
 .form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
   outline: 0;
   background: #704D77;
   border: 0;
-  padding: 15px;
+  padding: 7px 35px;
   color: #FFFFFF;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  border-radius: 3px;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #8d6e93;
 }
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #4CAF50;
-  text-decoration: none;
-}
+
 .form .register-form {
   display: none;
 }
@@ -90,13 +126,19 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+.warning-body {
+  color: #FFFFFF;
+  margin-top: 150px;
+  a {
+    color: #B9B7BA;
+  }
+}
+
 body {
   background: #411D41; /* fallback for old browsers */
-  background: -webkit-radial-gradient(center, #310F32, #754E79 15%);
-  background: -moz-radial-gradient(center, #310F32, #754E79 15%);
-  background: -o-radial-gradient(center, #310F32, #754E79 15%);
-  background: linear-gradient(to center, #310F32, #754E79 15%);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;
 }

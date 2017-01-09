@@ -9,6 +9,10 @@ var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
 var webpack = require('webpack');
+var serveStatic = require('serve-static');
+var concat = require('gulp-concat');
+var connect = require('connect');
+var path = require('path');
 
 var yeoman = {
   app: require('./bower.json').appPath || 'src/main/webapp/app',
@@ -18,6 +22,10 @@ var yeoman = {
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
   styles: [yeoman.app + '/styles/**/*.scss'],
+  vendorcss: [
+    "bower_components/bootstrap/dist/css/bootstrap.css",
+    "bower_components/bootstrap/dist/css/bootstrap-theme.css"
+  ],
   test: ['test/spec/**/*.js'],
   testRequire: [
     yeoman.app + '/bower_components/angular/angular.js',
@@ -56,9 +64,23 @@ var styles = lazypipe()
 // Tasks //
 ///////////
 
-gulp.task('styles', function() {
+gulp.task('styles', ['vendorcss'], function() {
   return gulp.src(paths.styles)
     .pipe(styles());
+});
+
+gulp.task('rev-and-inject', ['vendorcss'], function() {
+  // existing rev-and-inject task
+});
+
+gulp.task('vendorcss', function() {
+  return gulp
+    // set source
+    .src(paths.vendorcss)
+    // write to vendor.min.css
+    .pipe(concat('vendor.min.css'))
+    // write to dest
+    .pipe(gulp.dest(yeoman.dist + '/styles'));
 });
 
 gulp.task('lint:scripts', function() {
@@ -82,6 +104,14 @@ gulp.task('start:server', function() {
     // Change this to '0.0.0.0' to access the server from outside.
     port: 9000
   });
+
+  // var sourcePath = path.join(__dirname, yeoman.dist);
+  // var port = 9000;
+  // var serveFromPath = '/'//+ config.paths.buildPrefix;
+
+  // connect()
+  //   .use(serveStatic(sourcePath))
+  //   .listen(port);
 });
 
 gulp.task('start:server:test', function() {
@@ -143,7 +173,7 @@ gulp.task('bower', function() {
       directory: './bower_components',
       ignorePath: '..'
     }))
-    .pipe(gulp.dest(yeoman.app + '/views'));
+    .pipe(gulp.dest(yeoman.dist));
 });
 
 ///////////
@@ -154,38 +184,7 @@ gulp.task('webpack', function(callback) {
   //return gulp.src(yeoman.app)
   //  .pipe(webpack( require('./webpack.config.js') ))
   //  .pipe(gulp.dest( yeoman.dist + '/scripts/'));
-  webpack({
-    entry: {
-      "app.purple": [
-        "./src/main/webapp/app/scripts/app.js",
-      ]
-    },
-    output: {
-      path: "./src/main/webapp/dist",
-      filename: "purple.bundle.js"
-    },
-    resolve: {
-      extensions: ['', '.js'],
-      modulesDirectories: [
-        'bower_components',
-        'node_modules',
-        'src/main/webapp/app/scripts',
-      ],
-      alias: {
-        //'jquery': 'bower_components/jquery/dist/jquery.js'
-      }
-    },
-    module: {
-      loaders: [{
-        test: /\.css$/,
-        loader: "style!css!sass"
-      }]
-    },
-    jshint: {
-      emitErrors: true,
-      failOnHint: false
-    }
-  }, function() {
+  webpack(require('./webpack.config.js'), function() {
     callback();
   });
 });

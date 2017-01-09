@@ -2,9 +2,11 @@
   "name": "frontend",
   "private": true,
   "devDependencies": {
+    "css-loader": "^0.26.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "2.3.1",
     "gulp-cache": "^0.2.10",
+    "gulp-concat": "^2.6.1",
     "gulp-connect": "^2.2.0",
     "gulp-filter": "^2.0.2",
     "gulp-imagemin": "^2.3.0",
@@ -27,17 +29,27 @@
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "lazypipe": "^0.2.4",
+    "node-sass": "^4.2.0",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.1.14",
     "rimraf": "^2.4.0",
     "run-sequence": "^1.1.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vinyl-named": "^1.1.0",
     "webpack": "^1.14.0",
+    "webpack-stream": "^3.2.0",
     "wiredep": "^2.2.2"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "karma start test/karma.conf.js"
+    "test": "karma start test/karma.conf.js",
+    "start": "gulp serve"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }

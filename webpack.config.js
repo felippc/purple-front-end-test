@@ -4,11 +4,16 @@ this.config = {
   entry: {
     "app.purple": [
       "./src/main/webapp/app/scripts/app.js",
+    ],
+    "app.purple.styles": [
+      "./bower_components/bootstrap/dist/css/bootstrap.css",
+      './src/main/webapp/app/styles/main.scss',
     ]
   },
   output: {
     path: "./src/main/webapp/dist",
-    filename: "purple.bundle.js"
+    filename: "[name].bundle.js",
+    publicPath: "/"
   },
   resolve: {
     extensions: ['', '.js'],
@@ -18,13 +23,18 @@ this.config = {
       'src/main/webapp/app/scripts',
     ],
     alias: {
-      //'jquery': 'bower_components/jquery/dist/jquery.js'
     }
   },
   module: {
     loaders: [{
-      test: /\.css$/,
+     test: /\.scss$/,
       loader: "style!css!sass"
+    }, {
+      test: /\.css$/,
+      loaders: ['style', 'css']
+    }, {
+     test: /\.(png|gif|woff|woff2|eot|ttf|svg)$/,
+     loaders: ['url-loader']
     }]
   },
   jshint: {

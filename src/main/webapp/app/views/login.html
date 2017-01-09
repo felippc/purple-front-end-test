@@ -1,34 +1,42 @@
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="login-page form">
+    <div class="modal-header purple-header">
+      <div class="header-title">
+        <span>Login Form</span>
+      </div>
+      <div class="close-button">
+       <span><a href="" ng-click="close()">X</a></span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+      <div class="modal-body has-feedback" id="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <input type="text" placeholder="Username"/>
+              <i class="glyphicon glyphicon-user purple-icon form-control-feedback"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input type="password" placeholder="Password"/>
+              <i class="glyphicon glyphicon-lock purple-icon form-control-feedback"></i>
+            </div>
+          </div>
+          <div class="row final-row">
+            <div class="sign-button">
+              <button>Sign In</button>
+            </div>
+            <div class="sign-button pass-link">
+              <p> <a href="#">Lost Your Password ?</a></p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</script>
 <div class="login-page">
-  <div class="form">
-    <div class="form-header"> <span class="header-title">Login Form</span> <span class="close-button">X</span></div>
-    <div class="form-body">
-      <form class="register-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
-        <p class="message">Already registered? <a href="#">Sign In</a></p>
-      </form>
-      <form class="login-form">
-        <div class="row">
-          <div class="col-md-12">
-            <input type="text" placeholder="username"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <input type="password" placeholder="password"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <button>Sign In</button>
-          </div>
-          <div class="col-md-3">
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-          </div>
-        </div>
-      </form>
+    <div class="warning-body">
+      <h1>You must <a href="" ng-click="open()">Sign In</a> to get system content!</h1>
     </div>
   </div>
 </div>
