@@ -13,6 +13,7 @@ var serveStatic = require('serve-static');
 var concat = require('gulp-concat');
 var connect = require('connect');
 var path = require('path');
+var protractor = require("gulp-protractor").protractor;
 
 var yeoman = {
   app: require('./bower.json').appPath || 'src/main/webapp/app',
@@ -47,6 +48,16 @@ var paths = {
 ////////////////////////
 // Reusable pipelines //
 ////////////////////////
+
+gulp.task('e2e', function(done) {
+  var args = ['--baseUrl', 'http://localhost:9001'];
+  gulp.src(["./test/protractor/*.js"])
+    .pipe(protractor({
+      configFile: "protractor.config.js",
+      args: args
+    }))
+    .on('error', function(e) { throw e; });
+});
 
 var lintScripts = lazypipe()
   .pipe($.jshint, '.jshintrc')
@@ -116,7 +127,7 @@ gulp.task('start:server', function() {
 
 gulp.task('start:server:test', function() {
   $.connect.server({
-    root: ['test', yeoman.app, '.tmp'],
+    root: ['test', yeoman.app, yeoman.dist],
     livereload: true,
     port: 9001
   });
