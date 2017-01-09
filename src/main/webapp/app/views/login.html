@@ -10,26 +10,26 @@
       <div class="clearfix"></div>
     </div>
       <div class="modal-body has-feedback" id="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <input type="text" placeholder="Username"/>
-              <i class="glyphicon glyphicon-user purple-icon form-control-feedback"></i>
-            </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input type="text" placeholder="Username" ng-model="user"/>
+            <i class="glyphicon glyphicon-user purple-icon form-control-feedback"></i>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <input type="password" placeholder="Password"/>
-              <i class="glyphicon glyphicon-lock purple-icon form-control-feedback"></i>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input type="password" placeholder="Password" ng-model="pass"/>
+            <i class="glyphicon glyphicon-lock purple-icon form-control-feedback"></i>
           </div>
-          <div class="row final-row">
-            <div class="sign-button">
-              <button>Sign In</button>
-            </div>
-            <div class="sign-button pass-link">
-              <p> <a href="#">Lost Your Password ?</a></p>
-            </div>
+        </div>
+        <div class="row final-row">
+          <div class="sign-button">
+            <button ng-click="doLogin()">Sign In</button>
           </div>
+          <div class="sign-button pass-link">
+            <p> <a href="#">Lost Your Password ?</a></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

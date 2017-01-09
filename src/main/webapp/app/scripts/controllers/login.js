@@ -5,7 +5,7 @@ angular.module('frontEndApp')
 	.controller('LoginCtrl', ['$scope', '$uibModal', '$document',
 		function($scope, $uibModal, $document) {
 
-			$scope.open = function(size, parentSelector) {
+			$scope.open = function _openLoginModal(size, parentSelector) {
 				var parentElem = parentSelector ?
 					angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
 				var modalInstance = $uibModal.open({
@@ -19,25 +19,25 @@ angular.module('frontEndApp')
 					appendTo: parentElem,
 					backdrop: false,
 					windowClass: 'login-modal'
-					// resolve: {
-					// 	items: function() {
-					// 		return $ctrl.items;
-					// 	}
-					// }
+						// resolve: {
+						// 	items: function() {
+						// 		return $ctrl.items;
+						// 	}
+						// }
 				});
 
-				modalInstance.result.then(function(selectedItem) {
-					$scope.selected = selectedItem;
-				}, function() {
-					console.log('Modal dismissed at: ' + new Date());
-				});
 			};
 
 			$scope.open();
 		}
 	]);
 
-angular.module('frontEndApp').controller('ModalInstanceCtrl', function($uibModalInstance, $scope) {
+angular.module('frontEndApp').controller('ModalInstanceCtrl', function($uibModalInstance, $scope, $location) {
+
+	$scope.doLogin = function _doLogin() {
+		$scope.dismiss();
+		$location.url('/list-itens');
+	};
 
 	$scope.close = function() {
 		$uibModalInstance.close();

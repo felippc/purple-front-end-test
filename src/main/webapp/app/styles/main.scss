@@ -1,7 +1,12 @@
 // bower:scss
 // endbower
 
+
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+.left-margin-default {
+  margin-left: 15px;
+}
 
 .login-modal .modal-dialog {
   width: 500px;
@@ -22,6 +27,7 @@
     text-align: right;
     float: right;
     margin: 4px 15px 4px 0px;
+    cursor: pointer;
 
     a {
       color: #FFFFFF;
@@ -96,8 +102,7 @@
 .container {
   position: relative;
   z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
+  margin: 75px auto;
 }
 .container:before, .container:after {
   content: "";
@@ -129,10 +134,13 @@
 
 .warning-body {
   color: #FFFFFF;
-  margin-top: 150px;
+  width: 300px;
+  margin: 150px auto;
+
   a {
     color: #B9B7BA;
   }
+
 }
 
 body {

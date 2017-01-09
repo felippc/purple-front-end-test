@@ -50,17 +50,28 @@ app.config(function($routeProvider, $controllerProvider) {
             require('angular-bootstrap');
             require('./controllers/login');
             deferred.resolve();
-          });
+          }, 'LoginCtrl-chunk');
 
           return deferred.promise;
         }]
       }
     })
-    // .when('/about', {
-    //   templateUrl: 'views/about.html',
-    //   controller: 'AboutCtrl',
-    //   controllerAs: 'about'
-    // })
+    .when('/list-itens', {
+      templateUrl: 'views/list-itens.html',
+      controller: 'ListItensCtrl',
+      resolve: {
+        load: ['$q', function($q) {
+          var deferred = $q.defer();
+
+          require.ensure([], function(require) {
+            require('./controllers/list-itens');
+            deferred.resolve();
+          }, 'ListItensCtrl-chunk');
+
+          return deferred.promise;
+        }]
+      }
+    })
     .otherwise({
       redirectTo: '/'
     });

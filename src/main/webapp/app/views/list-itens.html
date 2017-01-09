@@ -1,3 +1,36 @@
-<div class="form">
-	<p>This is the about view.</p>
+<div class="listContainer">
+	<div class="form">
+	    <div class="modal-header purple-header">
+	      <div class="header-title">
+	        <span>Login Form</span>
+	      </div>
+	      <div class="close-button">
+	       <span><a href="" ng-click="">Exit</a></span>
+	      </div>
+	      <div class="clearfix"></div>
+	    </div>
+	    <div class="modal-body has-feedback" id="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <input type="text" placeholder="Search" ng-model="searchText"/>
+            <i class="glyphicon glyphicon-search purple-icon form-control-feedback"></i>
+          </div>
+        </div>
+				<hr>
+				<div class="row">
+					<table id="itensTable">
+						<thead>
+							<tr><th class="table-head">Topic</th><th class="table-head">Time</th></tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in itens | filter:searchText">
+								<td class="table-cell ">{{item.topic}}</td>
+								<td class="table-cell">{{item.time}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<hr>
+			</div>
+	</div>
 </div>

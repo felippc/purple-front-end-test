@@ -8,6 +8,7 @@ this.config = {
     "app.purple.styles": [
       "./bower_components/bootstrap/dist/css/bootstrap.css",
       './src/main/webapp/app/styles/main.scss',
+      './src/main/webapp/app/styles/list-itens.scss',
     ]
   },
   output: {
