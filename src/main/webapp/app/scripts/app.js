@@ -7,10 +7,6 @@ require('../../../../../bower_components/bootstrap/dist/js/bootstrap.js');
 require('angular');
 require('angular-route');
 require('angular-animate');
-require('angular-aria');
-require('angular-messages');
-require('angular-resource');
-require('angular-sanitize');
 require('angular-touch');
 require('angular-bootstrap');
 
@@ -25,12 +21,7 @@ require('angular-bootstrap');
 var app = angular
   .module('frontEndApp', [
     'ngAnimate',
-    'ngAria',
-    //'ngCookies',
-    'ngMessages',
-    'ngResource',
     'ngRoute',
-    'ngSanitize',
     'ngTouch',
     'ui.bootstrap'
   ]);
