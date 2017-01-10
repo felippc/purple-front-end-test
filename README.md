@@ -1,12 +1,11 @@
-# front-end
+# Purple: a front-end Test Project 
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This is a simple front-end project developed to test some knowledges.
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run 'npm install' to build and 'npm start' to run.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+Tests was developed using protractro, so you need to start a selenium server (probably in other terminal) with the command 'webdriver-manager start --standalone' and, then, start the test taks with 'gulp e2e-test'. 
